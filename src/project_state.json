@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "A Clash of Clans-style strategy game with base-building, resource management, building placement, troop training, and attack mechanics",
+  "architectural_notes": [
+    "Strategy game with real-time base defense and attack gameplay",
+    "Grid-based building placement system",
+    "Resource collection and storage mechanics"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Gold coin icon with shiny metallic appearance (gold-icon.dim_64x64.png)\n- Purple elixir droplet icon with glossy effect (elixir-icon.dim_64x64.png)\n- Medieval town hall building illustration with stone walls and red roof (townhall-icon.dim_128x128.png)\n- Gold mine building with pickaxe and ore cart (goldmine-icon.dim_128x128.png)\n- Purple elixir collector building with magical crystal (elixir-collector-icon.dim_128x128.png)\n- Wooden barracks building with training yard (barracks-icon.dim_128x128.png)\n- Stone cannon defense tower (cannon-icon.dim_128x128.png)\n- Wooden archer tower with archer on top (archer-tower-icon.dim_128x128.png)\n- Barbarian warrior portrait with helmet and sword (barbarian-portrait.dim_96x96.png)\n- Archer portrait with bow and arrows (archer-portrait.dim_96x96.png)\n- Giant warrior portrait with club (giant-portrait.dim_96x96.png)\n- Construction hammer icon for building upgrades (construction-icon.dim_64x64.png)\n- Victory star icon for battle results (star-icon.dim_64x64.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-3d-isometric-game-world-using-three-js-with-react-three-fiber-where-players-can-view-and-interact-with-their-base-from-a-top-down-perspective",
+      "title": "Create a 3D isometric game world using Three.js with React Three Fiber where players can view and interact with their base from a top-down perspective",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-resource-management-system-tracking-gold-and-elixir-with-visual-counters-in-the-ui-header",
+      "title": "Implement a resource management system tracking Gold and Elixir with visual counters in the UI header",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-building-placement-system-allowing-players-to-place-move-and-upgrade-buildings-on-a-grid-based-map",
+      "title": "Create a building placement system allowing players to place, move, and upgrade buildings on a grid-based map",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-core-building-types-town-hall-gold-mine-elixir-collector-gold-storage-elixir-storage-barracks-and-defensive-structures-cannon-archer-tower-walls",
+      "title": "Implement core building types: Town Hall, Gold Mine, Elixir Collector, Gold Storage, Elixir Storage, Barracks, and defensive structures (Cannon, Archer Tower, Walls)",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-building-upgrade-system-with-time-based-construction-and-resource-costs",
+      "title": "Create a building upgrade system with time-based construction and resource costs",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-an-attack-mode-where-players-can-deploy-troops-on-an-enemy-base-and-watch-them-autonomously-attack-buildings-and-defenses",
+      "title": "Create an attack mode where players can deploy troops on an enemy base and watch them autonomously attack buildings and defenses",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-design-a-visually-cohesive-fantasy-medieval-game-theme-with-vibrant-colors-stone-and-wood-textures-for-buildings-and-grass-terrain-creating-an-engaging-strategy-game-aesthetic",
+      "title": "Design a visually cohesive fantasy medieval game theme with vibrant colors, stone and wood textures for buildings, and grass terrain, creating an engaging strategy game aesthetic",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-render-generated-game-assets-including-building-icons-troop-portraits-and-resource-icons-as-static-assets-in-frontend-public-assets-generated",
+      "title": "Render generated game assets including building icons, troop portraits, and resource icons as static assets in frontend/public/assets/generated",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Base-building system with building placement",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Resource management system",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Troop training mechanics",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Attack mechanics and combat system",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Implement a troop training system in Barracks allowing players to queue and train different unit types (Barbarian, Archer, Giant)",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Implement combat mechanics with troop stats (HP, damage, movement speed, attack range) and targeting logic",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Create a matchmaking system that pairs players with similar-level bases for attacking",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Implement a reward system for successful attacks that awards Gold and Elixir based on destruction percentage",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "2d",
+  "projectName": "Clash Builder",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

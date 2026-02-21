@@ -1,0 +1,284 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Clash Builder - 3D Strategy Game Frontend Implementation",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Create a 3D isometric game world using Three.js with React Three Fiber where players can view and interact with their base from a top-down perspective",
+      "acceptanceCriteria": [
+        "3D scene renders with isometric camera view",
+        "Players can pan and zoom the camera to view their base",
+        "Grid-based terrain is visible for building placement"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/game/GameCanvas.tsx",
+          "operation": "create",
+          "description": "Create React Three Fiber canvas component that renders the 3D game world with isometric camera setup, orbit controls for panning/zooming, and grid-based terrain mesh. Configure camera position for top-down isometric view and enable user interaction controls."
+        },
+        {
+          "path": "frontend/src/components/game/GridTerrain.tsx",
+          "operation": "create",
+          "description": "Create 3D grid terrain component using Three.js plane geometry with grass texture and visible grid lines. Render terrain as a flat surface with configurable grid size for building placement. Use fantasy-themed grass texture and subtle grid overlay."
+        },
+        {
+          "path": "frontend/src/hooks/useCamera.ts",
+          "operation": "create",
+          "description": "Create custom hook managing camera state, pan/zoom controls, and camera bounds to keep the base in view. Handle mouse wheel for zoom and drag for panning within defined limits."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Implement a resource management system tracking Gold and Elixir with visual counters in the UI header",
+      "acceptanceCriteria": [
+        "UI displays current resource amounts with icons",
+        "Resource amounts update in real-time"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ui/ResourceHeader.tsx",
+          "operation": "create",
+          "description": "Create UI header component displaying Gold and Elixir counters with icons. Use generated image assets frontend/public/assets/generated/gold-icon.dim_64x64.png and frontend/public/assets/generated/elixir-icon.dim_64x64.png. Style with fantasy theme colors and show resource amounts fetched from backend."
+        },
+        {
+          "path": "frontend/src/hooks/useResources.ts",
+          "operation": "create",
+          "description": "Create custom hook using React Query to fetch player resources from backend getResources method. Configure polling interval for real-time updates and handle resource state management."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Create a building placement system allowing players to place, move, and upgrade buildings on a grid-based map",
+      "acceptanceCriteria": [
+        "Players can select buildings from a build menu",
+        "Buildings snap to grid positions during placement",
+        "Placement validates available space and resource costs",
+        "Buildings can be moved by dragging after placement"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/game/BuildingPlacement.tsx",
+          "operation": "create",
+          "description": "Create building placement controller component handling placement mode, ghost preview, grid snapping, and collision detection. Show visual feedback during placement and validate against available resources before calling backend placeBuilding method."
+        },
+        {
+          "path": "frontend/src/components/ui/BuildMenu.tsx",
+          "operation": "create",
+          "description": "Create build menu UI component displaying available building types with icons from frontend/public/assets/generated/ (townhall-icon.dim_128x128.png, goldmine-icon.dim_128x128.png, elixir-collector-icon.dim_128x128.png, barracks-icon.dim_128x128.png, cannon-icon.dim_128x128.png, archer-tower-icon.dim_128x128.png). Show resource costs and allow selection for placement mode."
+        },
+        {
+          "path": "frontend/src/hooks/useBuildingPlacement.ts",
+          "operation": "create",
+          "description": "Create custom hook managing building placement state, grid snapping logic, collision detection, and placement submission to backend. Handle placement mode transitions and validation."
+        },
+        {
+          "path": "frontend/src/utils/gridUtils.ts",
+          "operation": "create",
+          "description": "Create utility functions for grid coordinate conversion, snapping 3D positions to grid cells, and checking grid cell availability for building placement."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Implement core building types: Town Hall, Gold Mine, Elixir Collector, Gold Storage, Elixir Storage, Barracks, and defensive structures (Cannon, Archer Tower, Walls)",
+      "acceptanceCriteria": [
+        "Each building type has distinct 3D model representation",
+        "Buildings have level-specific stats (HP, production rate, capacity)",
+        "Resource buildings generate resources over time",
+        "Storage buildings have capacity limits",
+        "Defensive buildings have range and damage properties"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/game/buildings/BuildingRenderer.tsx",
+          "operation": "create",
+          "description": "Create building renderer component that renders different building types as 3D meshes based on BuildingType enum from backend interface. Use distinct geometries and materials for each building type (box geometry with medieval textures for town hall, cylinder for towers, etc.). Display level-specific visual variations."
+        },
+        {
+          "path": "frontend/src/components/game/buildings/TownHall.tsx",
+          "operation": "create",
+          "description": "Create Town Hall 3D component using Three.js mesh with stone texture and medieval architecture. Scale and appearance vary by building level from backend data."
+        },
+        {
+          "path": "frontend/src/components/game/buildings/ResourceBuilding.tsx",
+          "operation": "create",
+          "description": "Create reusable resource building component for Gold Mine and Elixir Collector with distinct 3D models. Show production animations and use appropriate textures for each type."
+        },
+        {
+          "path": "frontend/src/components/game/buildings/DefensiveBuilding.tsx",
+          "operation": "create",
+          "description": "Create defensive building component for Cannon and Archer Tower with range indicators. Render defensive structures with medieval fantasy aesthetic and show targeting arcs when selected."
+        },
+        {
+          "path": "frontend/src/components/game/buildings/StorageBuilding.tsx",
+          "operation": "create",
+          "description": "Create storage building component for Gold Storage and Elixir Storage with capacity-based visual fill indicators."
+        },
+        {
+          "path": "frontend/src/components/game/buildings/Wall.tsx",
+          "operation": "create",
+          "description": "Create wall segment component as thin box geometry with stone texture, snapping to grid edges for defensive perimeter."
+        },
+        {
+          "path": "frontend/src/hooks/useBuildings.ts",
+          "operation": "create",
+          "description": "Create custom hook using React Query to fetch buildings from backend getBuildings method. Handle building state updates and provide building data to rendering components."
+        },
+        {
+          "path": "frontend/src/constants/buildingStats.ts",
+          "operation": "create",
+          "description": "Create constants file defining building type metadata for frontend display including size, color schemes, and icon references to generated assets."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Create a building upgrade system with time-based construction and resource costs",
+      "acceptanceCriteria": [
+        "Players can upgrade buildings by spending resources",
+        "Upgrades take time to complete (tracked by backend)",
+        "Visual indicator shows buildings under construction",
+        "Only one upgrade can be active at a time per builder",
+        "Completed upgrades improve building stats and appearance"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/game/BuildingUpgrade.tsx",
+          "operation": "create",
+          "description": "Create building upgrade UI component showing upgrade button, resource costs, and construction time. Display construction progress overlay with frontend/public/assets/generated/construction-icon.dim_64x64.png when building is upgrading. Check constructionStart and constructionEnd from backend Building interface."
+        },
+        {
+          "path": "frontend/src/components/game/ConstructionIndicator.tsx",
+          "operation": "create",
+          "description": "Create visual construction indicator component rendered over buildings under construction. Show animated hammer icon from frontend/public/assets/generated/construction-icon.dim_64x64.png and countdown timer based on backend construction timestamps."
+        },
+        {
+          "path": "frontend/src/hooks/useUpgrade.ts",
+          "operation": "create",
+          "description": "Create custom hook managing upgrade interactions, submitting upgrade requests to backend, and tracking construction progress with countdown timers."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Implement a troop training system in Barracks allowing players to queue and train different unit types (Barbarian, Archer, Giant)",
+      "acceptanceCriteria": [
+        "Players can select troops to train from Barracks menu",
+        "Training consumes Elixir and takes time",
+        "Training queue shows progress and remaining time",
+        "Trained troops are added to army camp capacity"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ui/BarracksMenu.tsx",
+          "operation": "create",
+          "description": "Create Barracks training menu component showing available troop types with portraits from frontend/public/assets/generated/barbarian-portrait.dim_96x96.png, frontend/public/assets/generated/archer-portrait.dim_96x96.png, and frontend/public/assets/generated/giant-portrait.dim_96x96.png. Display training costs, time, and queue. Call backend trainTroop method when player selects a troop."
+        },
+        {
+          "path": "frontend/src/components/ui/TrainingQueue.tsx",
+          "operation": "create",
+          "description": "Create training queue UI component displaying troops in training with progress bars and countdown timers. Show troop portraits and remaining time for each queued unit."
+        },
+        {
+          "path": "frontend/src/hooks/useTroopTraining.ts",
+          "operation": "create",
+          "description": "Create custom hook managing troop training state, queue updates, and training submissions to backend. Handle training progress tracking and completion notifications."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Create an attack mode where players can deploy troops on an enemy base and watch them autonomously attack buildings and defenses",
+      "acceptanceCriteria": [
+        "Players can enter attack mode with their trained troops",
+        "Troops can be deployed by clicking/tapping on the map",
+        "Troops pathfind to nearest targets and attack autonomously",
+        "Defensive buildings target and damage attacking troops",
+        "Buildings are destroyed when HP reaches zero"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/game/AttackMode.tsx",
+          "operation": "create",
+          "description": "Create attack mode component managing battle state, troop deployment UI, and combat visualization. Load enemy base from backend findMatch method. Handle troop deployment on click and animate combat actions. Submit attack results to backend recordAttack method when battle ends."
+        },
+        {
+          "path": "frontend/src/components/game/troops/TroopRenderer.tsx",
+          "operation": "create",
+          "description": "Create troop renderer component displaying attacking troops as 3D models in battle. Animate troop movement, attacks, and death animations. Render different troop types based on TroopType enum."
+        },
+        {
+          "path": "frontend/src/components/game/troops/TroopDeploymentUI.tsx",
+          "operation": "create",
+          "description": "Create troop deployment UI bar at bottom of screen showing available troops with portraits and counts. Allow drag-and-drop or click deployment onto battle map."
+        },
+        {
+          "path": "frontend/src/hooks/useAttackMode.ts",
+          "operation": "create",
+          "description": "Create custom hook managing attack mode state, troop deployment, combat simulation, and battle results. Handle matchmaking calls and result submission to backend."
+        },
+        {
+          "path": "frontend/src/utils/combatSimulation.ts",
+          "operation": "create",
+          "description": "Create frontend combat simulation utilities for animating battles. Handle pathfinding, target selection, damage animations, and destruction percentage calculation for visual feedback before backend validation."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Design a visually cohesive fantasy medieval game theme with vibrant colors, stone and wood textures for buildings, and grass terrain, creating an engaging strategy game aesthetic",
+      "acceptanceCriteria": [
+        "UI uses fantasy-themed colors and typography",
+        "Buildings have medieval fantasy aesthetic",
+        "Consistent visual style across all game elements",
+        "Terrain textures match the fantasy theme"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add fantasy medieval theme CSS variables including vibrant primary colors (deep blues, golds, purples), medieval-style font families, and UI element styling for buttons, panels, and overlays. Define color scheme matching Clash of Clans aesthetic with warm earth tones."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind configuration with fantasy game theme colors, custom font families for medieval aesthetic, and game-specific utility classes for resource counters, health bars, and UI panels."
+        },
+        {
+          "path": "frontend/src/components/layout/GameLayout.tsx",
+          "operation": "create",
+          "description": "Create main game layout component wrapping game canvas and UI overlays. Apply consistent fantasy theme styling with decorative borders, medieval UI panel backgrounds, and responsive layout for resource header and build menu."
+        },
+        {
+          "path": "frontend/src/constants/theme.ts",
+          "operation": "create",
+          "description": "Create theme constants file defining color palette, texture references, and material properties for 3D rendering. Include medieval fantasy color scheme with stone grays, wood browns, grass greens, and gold/purple accents."
+        }
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "summary": "Render generated game assets including building icons, troop portraits, and resource icons as static assets in frontend/public/assets/generated",
+      "acceptanceCriteria": [
+        "Generated images are placed in frontend/public/assets/generated directory",
+        "Images are referenced correctly in components",
+        "All required icons and graphics are displayed in the UI"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/constants/assets.ts",
+          "operation": "create",
+          "description": "Create assets constants file mapping asset names to workspace paths for all generated images: frontend/public/assets/generated/gold-icon.dim_64x64.png, frontend/public/assets/generated/elixir-icon.dim_64x64.png, frontend/public/assets/generated/townhall-icon.dim_128x128.png, frontend/public/assets/generated/goldmine-icon.dim_128x128.png, frontend/public/assets/generated/elixir-collector-icon.dim_128x128.png, frontend/public/assets/generated/barracks-icon.dim_128x128.png, frontend/public/assets/generated/cannon-icon.dim_128x128.png, frontend/public/assets/generated/archer-tower-icon.dim_128x128.png, frontend/public/assets/generated/barbarian-portrait.dim_96x96.png, frontend/public/assets/generated/archer-portrait.dim_96x96.png, frontend/public/assets/generated/giant-portrait.dim_96x96.png, frontend/public/assets/generated/construction-icon.dim_64x64.png, frontend/public/assets/generated/star-icon.dim_64x64.png. Export as typed constants for type-safe asset references."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire GameLayout as the main application component containing GameCanvas with all game systems. Set up route structure for base view and attack mode. Initialize player data on mount by calling backend initializePlayer method."
+        }
+      ]
+    }
+  ]
+}

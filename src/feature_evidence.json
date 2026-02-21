@@ -1,0 +1,166 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-3d-isometric-game-world-using-three-js-with-react-three-fiber-where-players-can-view-and-interact-with-their-base-from-a-top-down-perspective",
+      "featureTitle": "Create a 3D isometric game world using Three.js with React Three Fiber where players can view and interact with their base from a top-down perspective",
+      "files": [
+        "frontend/src/components/game/GameCanvas.tsx",
+        "frontend/src/components/game/GridTerrain.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-resource-management-system-tracking-gold-and-elixir-with-visual-counters-in-the-ui-header",
+      "featureTitle": "Implement a resource management system tracking Gold and Elixir with visual counters in the UI header",
+      "files": [
+        "frontend/src/hooks/useResources.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-building-placement-system-allowing-players-to-place-move-and-upgrade-buildings-on-a-grid-based-map",
+      "featureTitle": "Create a building placement system allowing players to place, move, and upgrade buildings on a grid-based map",
+      "files": [
+        "frontend/src/components/game/BuildingPlacement.tsx",
+        "frontend/src/hooks/useBuildingPlacement.ts",
+        "frontend/src/utils/gridUtils.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-core-building-types-town-hall-gold-mine-elixir-collector-gold-storage-elixir-storage-barracks-and-defensive-structures-cannon-archer-tower-walls",
+      "featureTitle": "Implement core building types: Town Hall, Gold Mine, Elixir Collector, Gold Storage, Elixir Storage, Barracks, and defensive structures (Cannon, Archer Tower, Walls)",
+      "files": [
+        "frontend/src/components/game/buildings/BuildingRenderer.tsx",
+        "frontend/src/components/game/buildings/DefensiveBuilding.tsx",
+        "frontend/src/components/game/buildings/ResourceBuilding.tsx",
+        "frontend/src/components/game/buildings/StorageBuilding.tsx",
+        "frontend/src/components/game/buildings/TownHall.tsx",
+        "frontend/src/components/game/buildings/Wall.tsx",
+        "frontend/src/constants/buildingStats.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-building-upgrade-system-with-time-based-construction-and-resource-costs",
+      "featureTitle": "Create a building upgrade system with time-based construction and resource costs",
+      "files": [
+        "frontend/src/components/game/ConstructionIndicator.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-an-attack-mode-where-players-can-deploy-troops-on-an-enemy-base-and-watch-them-autonomously-attack-buildings-and-defenses",
+      "featureTitle": "Create an attack mode where players can deploy troops on an enemy base and watch them autonomously attack buildings and defenses",
+      "files": [
+        "frontend/src/components/game/AttackMode.tsx",
+        "frontend/src/components/game/troops/TroopDeploymentUI.tsx",
+        "frontend/src/components/game/troops/TroopRenderer.tsx",
+        "frontend/src/hooks/useAttackMode.ts",
+        "frontend/src/utils/combatSimulation.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-design-a-visually-cohesive-fantasy-medieval-game-theme-with-vibrant-colors-stone-and-wood-textures-for-buildings-and-grass-terrain-creating-an-engaging-strategy-game-aesthetic",
+      "featureTitle": "Design a visually cohesive fantasy medieval game theme with vibrant colors, stone and wood textures for buildings, and grass terrain, creating an engaging strategy game aesthetic",
+      "files": [
+        "frontend/src/components/layout/GameLayout.tsx",
+        "frontend/src/constants/theme.ts",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-render-generated-game-assets-including-building-icons-troop-portraits-and-resource-icons-as-static-assets-in-frontend-public-assets-generated",
+      "featureTitle": "Render generated game assets including building icons, troop portraits, and resource icons as static assets in frontend/public/assets/generated",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/constants/assets.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

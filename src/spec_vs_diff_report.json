@@ -1,0 +1,202 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-21T03:21:10.163Z",
+  "summary": "The implementation covers most frontend requirements (3D rendering, UI, building placement, troops, attack mode) and includes partial backend functionality (player state, building placement, troop training, matchmaking). However, several backend requirements are missing or incomplete, including full resource generation logic, combat mechanics, time-based upgrades, and reward calculations.",
+  "missing_requirements": [
+    {
+      "id": "REQ-2",
+      "requirement": "Resources increment over time from resource buildings",
+      "reason": "Backend does not implement automatic resource generation over time. The getResources method returns static values without any time-based calculation or resource building production rate logic.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "requirement": "Buildings can be moved by dragging after placement",
+      "reason": "No evidence of building movement functionality in the diff. The building placement system only handles initial placement, not repositioning existing buildings.",
+      "evidence": [
+        "frontend/src/components/game/BuildingPlacement.tsx"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "requirement": "Resource buildings generate resources over time",
+      "reason": "While building types are defined, there is no implementation of resource generation logic tied to resource buildings. No periodic resource increment based on production rates.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "requirement": "Storage buildings have capacity limits",
+      "reason": "Storage buildings are defined but there is no capacity limit enforcement in the backend. Resources can grow without checking storage capacity.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "requirement": "Completed upgrades improve building stats and appearance",
+      "reason": "While construction timing is tracked, there is no logic to complete upgrades, update building stats, or change appearance when construction finishes.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "requirement": "Only one upgrade can be active at a time per builder",
+      "reason": "No builder management or validation to ensure only one upgrade is active at a time.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "requirement": "Training consumes Elixir and takes time",
+      "reason": "The trainTroop function adds troops to a queue but does not deduct Elixir or implement time-based training completion.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "requirement": "Training queue shows progress and remaining time",
+      "reason": "Troop queue exists but no time tracking or progress calculation is implemented for training.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "requirement": "Troops pathfind to nearest targets and attack autonomously",
+      "reason": "TroopRenderer exists but contains no pathfinding or autonomous targeting logic. Troops are rendered but do not move or attack.",
+      "evidence": [
+        "frontend/src/components/game/troops/TroopRenderer.tsx"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "requirement": "Defensive buildings target and damage attacking troops",
+      "reason": "Defensive buildings are rendered but there is no implementation of targeting or damage calculation for attacking troops.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/components/game/buildings/DefensiveBuilding.tsx"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "requirement": "Buildings are destroyed when HP reaches zero",
+      "reason": "No HP tracking or destruction logic is implemented for buildings during combat.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "requirement": "Troops target nearest buildings or defenses",
+      "reason": "Combat mechanics including targeting logic are not implemented in the backend.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "requirement": "Damage is calculated per attack tick",
+      "reason": "No damage calculation or attack tick system is present in the backend combat implementation.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "requirement": "Troops are removed when HP reaches zero",
+      "reason": "No troop HP tracking or removal logic during combat.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "requirement": "Matchmaking considers Town Hall level",
+      "reason": "The findMatch function sorts by rating, not Town Hall level as specified in requirements.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "requirement": "Players can skip and search for a different base",
+      "reason": "No skip functionality or multiple opponent selection is implemented.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "requirement": "Calculate resource rewards based on destruction",
+      "reason": "The recordAttack function stores results but does not calculate rewards based on destruction percentage.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "requirement": "Award resources to attacker after battle ends",
+      "reason": "No logic to add looted resources to the attacker's resource counts.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "requirement": "Deduct stolen resources from defender's storage",
+      "reason": "No logic to reduce defender's resources when they are stolen.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    }
+  ],
+  "hallucinated_features": [],
+  "confidence": 0.85,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/game/AttackMode.tsx",
+    "frontend/src/components/game/BuildMenu.tsx",
+    "frontend/src/components/game/BuildingPlacement.tsx",
+    "frontend/src/components/game/ConstructionIndicator.tsx",
+    "frontend/src/components/game/GameCanvas.tsx",
+    "frontend/src/components/game/GridTerrain.tsx",
+    "frontend/src/components/game/ResourceHeader.tsx",
+    "frontend/src/components/game/buildings/BuildingRenderer.tsx",
+    "frontend/src/components/game/buildings/DefensiveBuilding.tsx",
+    "frontend/src/components/game/buildings/ResourceBuilding.tsx",
+    "frontend/src/components/game/buildings/StorageBuilding.tsx",
+    "frontend/src/components/game/buildings/TownHall.tsx",
+    "frontend/src/components/game/buildings/Wall.tsx",
+    "frontend/src/components/game/troops/TroopDeploymentUI.tsx",
+    "frontend/src/components/game/troops/TroopRenderer.tsx",
+    "frontend/src/components/layout/GameLayout.tsx",
+    "frontend/src/constants/assets.ts",
+    "frontend/src/constants/buildingStats.ts",
+    "frontend/src/constants/theme.ts",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useAttackMode.ts",
+    "frontend/src/hooks/useBuildingPlacement.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/hooks/useResources.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/utils/combatSimulation.ts",
+    "frontend/src/utils/gridUtils.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}
