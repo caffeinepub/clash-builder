@@ -1,0 +1,124 @@
+{
+  "kind": "build_request",
+  "title": "Improve 3D graphics quality and visual polish",
+  "projectName": "Clash Builder",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-13",
+      "text": "Enhance 3D building models with improved geometry, textures, and materials using Three.js capabilities - add depth, detail, and visual hierarchy to all building types (Town Hall, Gold Mine, Elixir Collector, Gold Storage, Elixir Storage, Barracks, Cannon, Archer Tower, Walls)",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-graphics"
+        ],
+        "quotes": [
+          "The graphics sucks"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Buildings have more detailed 3D geometry beyond basic boxes and cylinders",
+        "Materials include appropriate lighting response (metallic, roughness properties)",
+        "Buildings have visual depth with multiple components and layers",
+        "Each building type has a distinct visual identity"
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "text": "Add shadows and improved lighting to the 3D scene including ambient occlusion, directional shadows from buildings, and enhanced ambient lighting for better depth perception",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-graphics"
+        ],
+        "quotes": [
+          "The graphics sucks"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Buildings cast realistic shadows on the terrain",
+        "Scene has proper ambient and directional lighting",
+        "Shadows are optimized for performance",
+        "Overall scene has improved depth and atmosphere"
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "text": "Improve terrain rendering with textured ground plane instead of plain grid, add subtle terrain variations, and enhance the grid visualization to be less intrusive",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-graphics"
+        ],
+        "quotes": [
+          "The graphics sucks"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Ground has grass or stone texture instead of solid color",
+        "Grid lines are subtle and blend with the theme",
+        "Terrain feels more organic and less flat",
+        "Grid remains functional for building placement"
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "text": "Add visual effects and polish including smooth building construction animations, resource collection particle effects, attack impact effects, and building destruction animations",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-graphics"
+        ],
+        "quotes": [
+          "The graphics sucks"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Buildings have construction progress animation (fade in, grow, or build up effect)",
+        "Resource buildings show particle effects when generating resources",
+        "Attack mode shows visual feedback for troop attacks and building damage",
+        "Transitions and interactions feel polished and responsive"
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "text": "Enhance troop 3D models in attack mode with more detailed character representations, animations, and visual variety beyond basic capsule shapes",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-graphics"
+        ],
+        "quotes": [
+          "The graphics sucks"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Troops have distinctive 3D models that match their type (Barbarian, Archer, Giant)",
+        "Troops have simple walk/attack animations or movement effects",
+        "Each troop type is visually distinguishable at a glance",
+        "HP bars remain functional and visible"
+      ]
+    }
+  ],
+  "constraints": [
+    "Maintain compatibility with React Three Fiber and Three.js",
+    "Ensure performance remains acceptable with multiple buildings and troops visible",
+    "Do not modify backend logic or game mechanics",
+    "Keep existing building placement and grid snap functionality intact",
+    "Do not change hooks in frontend/src/hooks/useInternetIdentity.ts, useActor.ts, or useInternetIdentity.tsx"
+  ],
+  "nonGoals": [
+    "Rewriting the entire 3D rendering system",
+    "Adding complex physics simulations",
+    "Implementing photorealistic graphics",
+    "Changing game mechanics or balance",
+    "Modifying backend data structures"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Grass terrain texture with medieval fantasy style, seamless tileable pattern (grass-terrain.dim_512x512.png)",
+      "Stone path texture for building areas, medieval cobblestone style (stone-path.dim_512x512.png)"
+    ],
+    "edits": []
+  }
+}

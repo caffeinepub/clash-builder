@@ -1,0 +1,109 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-enhance-3d-building-models-with-improved-geometry-textures-and-materials-using-three-js-capabilities-add-depth-detail-and-visual-hierarchy-to-all-building-types-town-hall-gold-mine-elixir-collector-gold-storage-elixir-storage-barracks-cannon-archer-tower-walls",
+      "featureTitle": "Enhance 3D building models with improved geometry, textures, and materials using Three.js capabilities - add depth, detail, and visual hierarchy to all building types (Town Hall, Gold Mine, Elixir Collector, Gold Storage, Elixir Storage, Barracks, Cannon, Archer Tower, Walls)",
+      "files": [
+        "frontend/src/components/game/buildings/DefensiveBuilding.tsx",
+        "frontend/src/components/game/buildings/ResourceBuilding.tsx",
+        "frontend/src/components/game/buildings/StorageBuilding.tsx",
+        "frontend/src/components/game/buildings/TownHall.tsx",
+        "frontend/src/components/game/buildings/Wall.tsx",
+        "frontend/src/constants/buildingStats.ts",
+        "frontend/src/constants/theme.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-13"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-shadows-and-improved-lighting-to-the-3d-scene-including-ambient-occlusion-directional-shadows-from-buildings-and-enhanced-ambient-lighting-for-better-depth-perception",
+      "featureTitle": "Add shadows and improved lighting to the 3D scene including ambient occlusion, directional shadows from buildings, and enhanced ambient lighting for better depth perception",
+      "files": [
+        "frontend/src/components/game/GameCanvas.tsx",
+        "frontend/src/components/game/GridTerrain.tsx",
+        "frontend/src/components/game/buildings/BuildingRenderer.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-14"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-improve-terrain-rendering-with-textured-ground-plane-instead-of-plain-grid-add-subtle-terrain-variations-and-enhance-the-grid-visualization-to-be-less-intrusive",
+      "featureTitle": "Improve terrain rendering with textured ground plane instead of plain grid, add subtle terrain variations, and enhance the grid visualization to be less intrusive",
+      "files": [
+        "frontend/src/components/game/GridTerrain.tsx",
+        "frontend/src/constants/theme.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-15"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-visual-effects-and-polish-including-smooth-building-construction-animations-resource-collection-particle-effects-attack-impact-effects-and-building-destruction-animations",
+      "featureTitle": "Add visual effects and polish including smooth building construction animations, resource collection particle effects, attack impact effects, and building destruction animations",
+      "files": [
+        "frontend/src/components/game/AttackMode.tsx",
+        "frontend/src/components/game/buildings/BuildingRenderer.tsx",
+        "frontend/src/components/game/buildings/ResourceBuilding.tsx",
+        "frontend/src/components/game/troops/TroopRenderer.tsx",
+        "frontend/src/hooks/useAttackMode.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-16"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-enhance-troop-3d-models-in-attack-mode-with-more-detailed-character-representations-animations-and-visual-variety-beyond-basic-capsule-shapes",
+      "featureTitle": "Enhance troop 3D models in attack mode with more detailed character representations, animations, and visual variety beyond basic capsule shapes",
+      "files": [
+        "frontend/src/components/game/troops/TroopRenderer.tsx",
+        "frontend/src/constants/theme.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-17"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

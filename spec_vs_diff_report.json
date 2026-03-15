@@ -1,0 +1,62 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-21T03:31:55.620Z",
+  "summary": "The diff implements most visual enhancement requirements (REQ-13 through REQ-17) including improved 3D building models, enhanced lighting with shadows, textured terrain with grass, and enhanced troop models. However, several animation and particle effect features are incomplete or missing.",
+  "missing_requirements": [
+    {
+      "id": "REQ-16",
+      "requirement": "Resource buildings show particle effects when generating resources",
+      "reason": "Particle systems are implemented in ResourceBuilding.tsx but particles are not rendered properly - the points element uses incorrect syntax and particles are static rather than animating to show active resource generation",
+      "evidence": [
+        "frontend/src/components/game/buildings/ResourceBuilding.tsx"
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "requirement": "Attack mode shows visual feedback for troop attacks and building damage",
+      "reason": "Attack effects infrastructure exists (attackEffects state, triggerAttackEffect function) but no visual rendering of attack impacts or building damage is implemented in AttackMode.tsx or TroopRenderer.tsx",
+      "evidence": [
+        "frontend/src/components/game/AttackMode.tsx",
+        "frontend/src/hooks/useAttackMode.ts"
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "requirement": "Building destruction animations",
+      "reason": "No destruction or damage animations are implemented for buildings when they take damage during attacks",
+      "evidence": [
+        "frontend/src/components/game/buildings/BuildingRenderer.tsx",
+        "frontend/src/components/game/AttackMode.tsx"
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "requirement": "Troops have simple walk/attack animations or movement effects",
+      "reason": "Only walking bobbing animation is implemented. Attack animations referenced (sword swing) are present but troop attack state is not properly triggered, and no movement along paths is implemented",
+      "evidence": [
+        "frontend/src/components/game/troops/TroopRenderer.tsx",
+        "frontend/src/hooks/useAttackMode.ts"
+      ]
+    }
+  ],
+  "hallucinated_features": [],
+  "confidence": 0.85,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/components/game/AttackMode.tsx",
+    "frontend/src/components/game/GameCanvas.tsx",
+    "frontend/src/components/game/GridTerrain.tsx",
+    "frontend/src/components/game/buildings/BuildingRenderer.tsx",
+    "frontend/src/components/game/buildings/DefensiveBuilding.tsx",
+    "frontend/src/components/game/buildings/ResourceBuilding.tsx",
+    "frontend/src/components/game/buildings/StorageBuilding.tsx",
+    "frontend/src/components/game/buildings/TownHall.tsx",
+    "frontend/src/components/game/buildings/Wall.tsx",
+    "frontend/src/components/game/troops/TroopRenderer.tsx",
+    "frontend/src/constants/buildingStats.ts",
+    "frontend/src/constants/theme.ts",
+    "frontend/src/hooks/useAttackMode.ts",
+    "project_state.json"
+  ]
+}

@@ -1,0 +1,15 @@
+export const ASSETS = {
+  goldIcon: '/assets/generated/gold-icon.dim_64x64.png',
+  elixirIcon: '/assets/generated/elixir-icon.dim_64x64.png',
+  townhallIcon: '/assets/generated/townhall-icon.dim_128x128.png',
+  goldmineIcon: '/assets/generated/goldmine-icon.dim_128x128.png',
+  elixirCollectorIcon: '/assets/generated/elixir-collector-icon.dim_128x128.png',
+  barracksIcon: '/assets/generated/barracks-icon.dim_128x128.png',
+  cannonIcon: '/assets/generated/cannon-icon.dim_128x128.png',
+  archerTowerIcon: '/assets/generated/archer-tower-icon.dim_128x128.png',
+  barbarianPortrait: '/assets/generated/barbarian-portrait.dim_96x96.png',
+  archerPortrait: '/assets/generated/archer-portrait.dim_96x96.png',
+  giantPortrait: '/assets/generated/giant-portrait.dim_96x96.png',
+  constructionIcon: '/assets/generated/construction-icon.dim_64x64.png',
+  starIcon: '/assets/generated/star-icon.dim_64x64.png',
+} as const;

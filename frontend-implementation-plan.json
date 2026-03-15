@@ -1,0 +1,162 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Improve 3D graphics quality and visual polish",
+  "requirements": [
+    {
+      "id": "REQ-13",
+      "summary": "Enhance 3D building models with improved geometry, textures, and materials using Three.js capabilities",
+      "acceptanceCriteria": [
+        "Buildings have more detailed 3D geometry beyond basic boxes and cylinders",
+        "Materials include appropriate lighting response (metallic, roughness properties)",
+        "Buildings have visual depth with multiple components and layers",
+        "Each building type has a distinct visual identity"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/game/buildings/TownHall.tsx",
+          "operation": "modify",
+          "description": "Enhance Town Hall 3D model with multi-component architecture including detailed walls, ornate roof with layered geometry, entrance archway, decorative towers at corners, and PBR materials with metallic and roughness properties for stone and gold accents"
+        },
+        {
+          "path": "frontend/src/components/game/buildings/ResourceBuilding.tsx",
+          "operation": "modify",
+          "description": "Replace simple box geometry with detailed 3D models for Gold Mine (mining structure with support beams, minecart, ore pile), Elixir Collector (magical containment vessel with pipes and collection apparatus), and Barracks (military building with training yard elements). Add PBR materials with appropriate metallic/roughness values"
+        },
+        {
+          "path": "frontend/src/components/game/buildings/StorageBuilding.tsx",
+          "operation": "modify",
+          "description": "Enhance storage buildings with multi-layer geometry including reinforced walls, detailed lid mechanisms, corner bracing, and foundation. Add metallic materials with appropriate roughness for gold storage (shiny) and elixir storage (magical glow effect)"
+        },
+        {
+          "path": "frontend/src/components/game/buildings/DefensiveBuilding.tsx",
+          "operation": "modify",
+          "description": "Improve defensive building models with detailed tower structures, weapon platforms, battlements, and structural supports. For Cannon: add barrel with metal bands, base platform, and ammunition. For Archer Tower: add archer platform, roof canopy, and arrow details. Use PBR materials for wood and metal components"
+        },
+        {
+          "path": "frontend/src/components/game/buildings/Wall.tsx",
+          "operation": "modify",
+          "description": "Replace simple rectangular wall with detailed stone wall segment including individual stone blocks, mortar lines, top crenellations, and weathering details. Add stone material with appropriate roughness and normal map-like lighting response"
+        },
+        {
+          "path": "frontend/src/constants/buildingStats.ts",
+          "operation": "modify",
+          "description": "Update building metadata to include enhanced geometry parameters, material properties (metallic, roughness, emissive values), and multi-component positioning data for the improved building models"
+        },
+        {
+          "path": "frontend/src/constants/theme.ts",
+          "operation": "modify",
+          "description": "Add PBR material definitions including metallic, roughness, and emissive properties for stone, wood, gold, bronze, iron, and magical elixir materials used across all building types"
+        }
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "summary": "Add shadows and improved lighting to the 3D scene including ambient occlusion, directional shadows, and enhanced ambient lighting",
+      "acceptanceCriteria": [
+        "Buildings cast realistic shadows on the terrain",
+        "Scene has proper ambient and directional lighting",
+        "Shadows are optimized for performance",
+        "Overall scene has improved depth and atmosphere"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/game/GameCanvas.tsx",
+          "operation": "modify",
+          "description": "Add DirectionalLight with shadow mapping enabled (shadowMap.enabled=true, shadow camera configured for game area). Add ambient light with reduced intensity for fill. Configure shadow properties including bias, map size (1024x1024 or 2048x2048 based on performance), and camera bounds to cover the 30x30 grid. Add hemisphere light for subtle sky/ground color difference"
+        },
+        {
+          "path": "frontend/src/components/game/buildings/BuildingRenderer.tsx",
+          "operation": "modify",
+          "description": "Enable castShadow and receiveShadow props on all building mesh components to participate in shadow rendering. Ensure all child meshes in building components inherit shadow properties"
+        },
+        {
+          "path": "frontend/src/components/game/GridTerrain.tsx",
+          "operation": "modify",
+          "description": "Enable receiveShadow on the ground plane mesh to receive building shadows. Ensure ground material responds appropriately to lighting changes"
+        }
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "summary": "Improve terrain rendering with textured ground plane, subtle variations, and enhanced grid visualization",
+      "acceptanceCriteria": [
+        "Ground has grass or stone texture instead of solid color",
+        "Grid lines are subtle and blend with the theme",
+        "Terrain feels more organic and less flat",
+        "Grid remains functional for building placement"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/game/GridTerrain.tsx",
+          "operation": "modify",
+          "description": "Replace solid color ground plane with textured material using the generated grass-terrain.dim_512x512.png and stone-path.dim_512x512.png textures from frontend/public/assets/generated/. Apply grass texture as base with repeat wrapping, add subtle normal mapping for depth. Reduce grid helper opacity and adjust color to blend with terrain (dark green/brown tones). Consider using a custom shader material that blends textures near building areas"
+        },
+        {
+          "path": "frontend/src/constants/theme.ts",
+          "operation": "modify",
+          "description": "Add terrain material configuration including texture paths (frontend/public/assets/generated/grass-terrain.dim_512x512.png and frontend/public/assets/generated/stone-path.dim_512x512.png), repeat values for tileable textures, and grid styling parameters (reduced opacity, blended colors)"
+        }
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "summary": "Add visual effects and polish including construction animations, resource collection effects, attack impacts, and destruction animations",
+      "acceptanceCriteria": [
+        "Buildings have construction progress animation (fade in, grow, or build up effect)",
+        "Resource buildings show particle effects when generating resources",
+        "Attack mode shows visual feedback for troop attacks and building damage",
+        "Transitions and interactions feel polished and responsive"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/game/buildings/BuildingRenderer.tsx",
+          "operation": "modify",
+          "description": "Add construction animation logic that calculates progress percentage based on constructionStart and constructionEnd times. Apply progressive scale animation (building grows from 0 to 1) or vertical reveal animation (building constructs from bottom to top) with smooth easing. Add opacity fade-in during construction"
+        },
+        {
+          "path": "frontend/src/components/game/buildings/ResourceBuilding.tsx",
+          "operation": "modify",
+          "description": "Add particle effect system for resource generation using Three.js Points or instanced geometry. For Gold Mine: add golden sparkle particles that rise from the mine. For Elixir Collector: add purple/pink magical particle effects that swirl around the collector. Trigger particles periodically or when resources are available for collection"
+        },
+        {
+          "path": "frontend/src/components/game/AttackMode.tsx",
+          "operation": "modify",
+          "description": "Add impact particle effects when troops attack buildings using Three.js particle systems. Show explosion/impact effects on building damage with appropriate colors (fire for cannons, arrow impacts for archers). Add building destruction animation that scales down and fades out destroyed buildings"
+        },
+        {
+          "path": "frontend/src/components/game/troops/TroopRenderer.tsx",
+          "operation": "modify",
+          "description": "Add attack animation effects when troops engage buildings including attack motion (lunge forward), weapon effects (sword slash trails for barbarians, arrow projectiles for archers), and impact feedback"
+        },
+        {
+          "path": "frontend/src/hooks/useAttackMode.ts",
+          "operation": "modify",
+          "description": "Add state management for visual effects timing, coordinating particle effect triggers with battle simulation events (troop attacks, building damage, destruction) to ensure effects sync with combat logic"
+        }
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "summary": "Enhance troop 3D models with detailed character representations, animations, and visual variety",
+      "acceptanceCriteria": [
+        "Troops have distinctive 3D models that match their type (Barbarian, Archer, Giant)",
+        "Troops have simple walk/attack animations or movement effects",
+        "Each troop type is visually distinguishable at a glance",
+        "HP bars remain functional and visible"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/game/troops/TroopRenderer.tsx",
+          "operation": "modify",
+          "description": "Replace simple capsule geometry with detailed character models for each troop type. Barbarian: muscular humanoid with helmet, sword, and armor using primitive geometry combination. Archer: slender figure with bow and quiver. Giant: large scaled humanoid with club. Add walk cycle animation using position/rotation interpolation or bone-like transformations. Maintain HP bar positioning above each troop. Use distinct colors and proportions to differentiate troop types"
+        },
+        {
+          "path": "frontend/src/constants/theme.ts",
+          "operation": "modify",
+          "description": "Add troop visual configuration including model colors, scale factors for each type (Giant larger, Archer smaller), animation parameters (walk speed, bobbing amplitude), and material properties for armor, skin, and weapons"
+        }
+      ]
+    }
+  ]
+}
